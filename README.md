@@ -2,7 +2,7 @@
 
 Your personalized AI assistant with the ability to answer questions and schedule appointments.
 
-<img src="images/main-image.png"  width="75%" height="75%">
+<img src="images/main-image.png"  width="80%" height="80%">
 
 ## Setup
 
