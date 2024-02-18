@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Sidebar as FlowBiteSideBar } from "flowbite-react";
 import { Button } from "@chakra-ui/react";
-import { EditIcon } from "@chakra-ui/icons";
-import { getThreads } from "@/api/manageThreads";
+import { EditIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import { getAppointments, getThreads } from "@/api/manageThreads";
 import { ThreadType } from "@/utils/types";
 import logo from "@/logo.svg";
 
@@ -39,6 +39,17 @@ export default function Sidebar() {
     getThreadsData();
   }, [location.pathname]);
 
+  const openAppointments = async () => {
+    const res = await getAppointments();
+
+    if (res.status === 200 && res.data) {
+      const jsonString = JSON.stringify(res.data, null, 2);
+      const blob = new Blob([jsonString], { type: "application/json" });
+      const dataUri = URL.createObjectURL(blob);
+      window.open(dataUri, "_blank");
+    }
+  };
+
   return (
     <FlowBiteSideBar className="h-lvh">
       <div className="sticky top-0 bg=[#f9fafb]">
@@ -50,10 +61,20 @@ export default function Sidebar() {
           rightIcon={<EditIcon />}
           className="w-full"
           variant="outline"
-          mb="6px"
+          mb="2"
           onClick={() => navigate("/")}
         >
           New Chat
+        </Button>
+        <Button
+          colorScheme={"blue"}
+          rightIcon={<ExternalLinkIcon />}
+          className="w-full"
+          variant="outline"
+          mb="2"
+          onClick={openAppointments}
+        >
+          View Appointments
         </Button>
       </div>
       <div>

@@ -32,5 +32,3 @@ appointments = generate_appointments(start_date)
 file_path = "./appointments.json"
 with open(file_path, "w") as file:
     json.dump(appointments, file, indent=4)
-    
-

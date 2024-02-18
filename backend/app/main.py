@@ -2,13 +2,14 @@ import asyncio
 import json
 from typing import Dict
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
-from schedule_appointments import schedule_appointment
-from models import Message, Role, RunStatus, Thread
+from app.schedule_appointments import schedule_appointment
+from app.models import Message, Role, RunStatus, Thread
 from dotenv import load_dotenv
 import time
-import scripts.generate_appointments
+from scripts import generate_appointments
 
 load_dotenv()
 
@@ -45,7 +46,7 @@ assistant = openai.beta.assistants.create(
     name="Personal Assistant",
     instructions="You are a personal assistant. Answer any question or request the user has.",
     tools=tools,
-    model="gpt-4-turbo-preview",
+    model="gpt-3.5-turbo",
 )
 ASSISTANT_ID = assistant.id
 
@@ -73,7 +74,7 @@ def wait_on_run(run, thread_id):
             thread_id=thread_id,
             run_id=run.id,
         )
-        time.sleep(0.5)
+        time.sleep(1)
 
     if run.status in [
         RunStatus.CANCELLED,
@@ -199,3 +200,8 @@ async def create_message(thread_id: str, message: Message):
         raise HTTPException(
             status_code=500, detail=f"Failed to create message. Error: {e}"
         )
+
+
+@app.get("/appointments", tags=["appointments"])
+async def get_appointments():
+    return FileResponse("./appointments.json")

@@ -3,7 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Custom
 .DS_Store
+appointments.json
+.dockerignore
 
 # C extensions
 *.so

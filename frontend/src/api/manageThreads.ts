@@ -73,3 +73,17 @@ export const sendMessage = (threadId: string, message: MessageType) => {
     });
   return resp;
 };
+
+// Get list of appointments from json file
+export const getAppointments = () => {
+  const resp = customAxios({
+    method: "get",
+    url: "/appointments",
+  })
+    .then((res) => res)
+    .catch((e) => {
+      console.log(e.toJSON());
+      return e;
+    });
+  return resp;
+};
