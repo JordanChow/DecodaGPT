@@ -8,7 +8,7 @@ Your personalized AI assistant with the ability to answer questions and schedule
 2. Add a `.env` file in the backend folder
    1. This file should contain your Open AI api key in the following format:
       OPENAI_API_KEY=insert-api-key-here
-3. Start up Docker
+3. Ensure Docker is running in the background
 4. Run `docker-compose up` inside the root folder to start the application (this may take a bit).
 5. Once step 4 is complete, go to `http://localhost:3006/` to see DecodaGPT!
 
