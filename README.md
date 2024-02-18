@@ -2,6 +2,8 @@
 
 Your personalized AI assistant with the ability to answer questions and schedule appointments.
 
+<img src="images/main-image.png"  width="75%" height="75%">
+
 ## Setup
 
 1. Clone the repo locally
@@ -30,18 +32,20 @@ If the build fails, try removing the container and images and try again. Use `do
 
 ### Schedule an apppointment:
 
-![Make appointment](images/image.png)
+<img src="images/image.png"  width="75%" height="75%">
+
 ![Appointment result](images/image-1.png)
 
 ### View and message old chats:
 
-![Alt text](images/image-2.png)
+<img src="images/image-2.png"  width="30%" height="30%">
 
 ### Ask general questions:
 
-![Alt text](images/image-3.png)
+<img src="images/image-3.png"  width="50%" height="50%">
 
 ### View all appointments
 
 ![Alt text](images/image-4.png)
-![Alt text](images/image-5.png)
+
+<img src="images/image-5.png"  width="50%" height="50%">
